@@ -18,6 +18,7 @@ const db = knex({
     database: "cerebro",
   },
 });
+let port = process.env.PORT;
 
 const app = express();
 
@@ -31,6 +32,7 @@ app.get("/profile/:id", profile.handleProfileGet(db));
 app.put("/image", image.handleImage(db));
 app.post("/imageurl", image.handleApiCall);
 
-app.listen(3000, () => {
-  console.log("server running in this protal:3000");
-});
+if (port == null || port == "") {
+  port = 3000;
+}
+app.listen(port);
