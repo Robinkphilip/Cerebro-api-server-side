@@ -11,11 +11,10 @@ const profile = require("./controllers/profile");
 const db = knex({
   client: "pg",
   connection: {
-    host: "postgresql-graceful-95757",
-    port: 5432,
-    user: "robinkphilip",
-    password: "",
-    database: "cerebro",
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+      rejectUnauthorized: false,
+    },
   },
 });
 let port = process.env.PORT;
