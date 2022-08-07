@@ -1,6 +1,6 @@
 const handleRegister = (db, bcrypt) => (req, res) => {
   const saltRounds = 10;
-  const { name, email, password } = req.body;
+  // const { name, email, password } = req.body;
   if (!email || !password || !name) {
     return res.status(400).json("incorrect input");
   }
